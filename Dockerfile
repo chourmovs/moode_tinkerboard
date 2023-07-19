@@ -1,4 +1,4 @@
-FROM archlinux:base
+FROM balenalib/asus-tinker-board-debian:latest
 
 #########################################
 ##             SET LABELS              ##
@@ -17,7 +17,7 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 
 # Set correct environment variables
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
-ENV DEBIAN_FRONTEND=noninteractive MLDONKEY_DIR="/var/lib/mldonkey"
+ENV DEBIAN_FRONTEND=noninteractive 
 
 #########################################
 ##          DOWNLOAD PACKAGES          ##
