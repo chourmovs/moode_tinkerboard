@@ -65,12 +65,12 @@ RUN git clone https://github.com/moode-player/pkgbuild.git
 
 #COPY build.sh /pkgbuild/packages/moode-player
 #COPY station_manager.py /home/moode/www/util
-WORKDIR /moode
+WORKDIR /
 RUN ls
-WORKDIR /pkgbuild/packages/moode-player
+# WORKDIR /pkgbuild/packages/moode-player
 RUN chmod -R -v +x /pkgbuild/packages/moode-player
-RUN ./build.sh
-RUN ./postinstall.sh
+RUN /pkgbuild/packages/moode-player/build.sh
+# RUN ./postinstall.sh
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
