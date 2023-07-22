@@ -111,7 +111,7 @@ DEPENDS="--depends alsa-cdsp \
 --depends xorg \
 --depends zip"
 
-EXTEND="-S moode --iteration $DEBVER$DEBLOC --license GPLv3 --category sound --after-install $POSTINSTALL2 --config-files $CAMILLA1 --config-files $CAMILLA2 --config-files $CONFIG2 $DEPENDS"
+EXTEND="-S moode --iteration $DEBVER$DEBLOC --category sound --after-install $POSTINSTALL2 --config-files $CAMILLA1 --config-files $CAMILLA2 --config-files $CONFIG2 $DEPENDS"
 
 # PKG_SOURCE_GIT="https://github.com/moode-player/moode.git"
 # PKG_SOURCE_GIT_TAG="r760prod"
