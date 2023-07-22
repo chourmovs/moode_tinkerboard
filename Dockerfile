@@ -50,6 +50,7 @@ keyring_location=/etc/apt/trusted.gpg.d/moodeaudio-m8y.gpg
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/moodeaudio/m8y/gpg.E5A251A46C58117E.key' |  gpg --dearmor >> ${keyring_location}
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/moodeaudio/m8y/config.deb.txt?distro=raspbian&codename=bullseye' > /etc/apt/sources.list.d/moodeaudio-m8y.list
 RUN apt-get update
+sudo apt-get install moode-player=8.3.3-1moode1
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
