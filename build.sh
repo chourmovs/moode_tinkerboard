@@ -20,7 +20,7 @@ PKG="moode-player_8.3.3-1moode1"
 # The enviroment var MOODE_DIR should be set to the location where the moode source repo.
 
 # sync required npm modules for gulp build if if already exists
-NPM_CI=0
+NPM_CI=1
 # build web app with gulp, to speed up test build without change to frontend (or manual build) diable this
 BUILD_APP=0
 
