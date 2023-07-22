@@ -73,7 +73,6 @@ RUN ls
 # USER root 
 RUN chmod -R -v +x /home/Foo/pkgbuild/packages/moode-player
 #USER Foo
-RUN curl https://dl.cloudsmith.io/public/moodeaudio/m8y/raw/files/moode-stations-full_8.3.3.zip > moode-stations-full_8.3.3.zip
 RUN /home/Foo/pkgbuild/packages/moode-player/build.sh
 # RUN ./postinstall.sh
 
