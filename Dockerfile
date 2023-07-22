@@ -1,11 +1,11 @@
 #########################################
 ##            NODE.JS STUFF            ##
 #########################################
-FROM node:12
-WORKDIR /app
-COPY package.json .
-COPY . .
-RUN npm install
+#FROM node:12
+#WORKDIR /app
+#COPY package.json .
+#COPY . .
+#RUN npm install
 
 
 FROM balenalib/asus-tinker-board-debian:latest-build
@@ -57,8 +57,8 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 #RUN npm install 
 
 #RUN mkdir /home/moode
-#COPY package-lock.json /home/moode
-#COPY package.json /home/moode
+COPY package-lock.json /home/Foo
+COPY package.json /home/Foo
 
 
 USER root
@@ -70,9 +70,10 @@ RUN git clone https://github.com/moode-player/pkgbuild.git
 WORKDIR /home/Foo
 RUN ls
 # WORKDIR /pkgbuild/packages/moode-player
-#USER root 
+# USER root 
 RUN chmod -R -v +x /home/Foo/pkgbuild/packages/moode-player
 #USER Foo
+curl https://dl.cloudsmith.io/public/moodeaudio/m8y/raw/files/moode-stations-full_8.3.3.zip > moode-stations-full_8.3.3.zip
 RUN /home/Foo/pkgbuild/packages/moode-player/build.sh
 # RUN ./postinstall.sh
 
