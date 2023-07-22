@@ -15,6 +15,7 @@ POSTINSTALL="postinstall.sh"
 POSTINSTALL2=$BUILD_ROOT_DIR/$POSTINSTALL
 CAMILLA1="usr/share/camilladsp/configs" 
 CAMILLA2="usr/share/camilladsp/coeffs"
+CONFIG2="/var/lib/mpd/playlists"
 # PKG_SOURCE_GIT="https://github.com/moode-player/moode.git"
 # PKG_SOURCE_GIT_TAG="r760prod"
 
@@ -317,7 +318,7 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --depends xinit \
 --depends xorg \
 --depends zip \
---config-files /var/lib/mpd/playlists \
+--config-files $CONFIG2 \
 root/boot/.=/boot \
 root/var/.=/var \
 root/home/.=/home \
