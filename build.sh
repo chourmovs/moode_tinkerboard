@@ -15,7 +15,15 @@ POSTINSTALL="postinstall.sh"
 POSTINSTALL2=$BUILD_ROOT_DIR/$POSTINSTALL
 CAMILLA1="usr/share/camilladsp/configs" 
 CAMILLA2="usr/share/camilladsp/coeffs"
-CONFIG2="/var/lib/mpd/playlists"
+CONFIG2="/var/lib/mpd/playlists \
+root/boot/.=/boot \
+root/var/.=/var \
+root/home/.=/home \
+root/mnt/.=/mnt \
+root/usr/.=/usr \
+root/lib/.=/lib \
+root/etc/.=/etc"
+
 # PKG_SOURCE_GIT="https://github.com/moode-player/moode.git"
 # PKG_SOURCE_GIT_TAG="r760prod"
 
@@ -319,13 +327,7 @@ fpm --config-files $CAMILLA1 \
 -S moode \
 --iteration $DEBVER$DEBLOC \
 --after-install $POSTINSTALL2 \
-root/boot/.=/boot \
-root/var/.=/var \
-root/home/.=/home \
-root/mnt/.=/mnt \
-root/usr/.=/usr \
-root/lib/.=/lib \
-root/etc/.=/etc
+
 
 if [[ $? -gt 0 ]]
 then
