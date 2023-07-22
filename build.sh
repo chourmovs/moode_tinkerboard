@@ -223,7 +223,6 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --category sound \
 -S moode \
 --iteration $DEBVER$DEBLOC \
---url 'https://moodeaudio.org' \
 -m 'moodeaudio.org' \
 --description 'moOde audio player' \
 --after-install $BUILD_ROOT_DIR/postinstall.sh \
