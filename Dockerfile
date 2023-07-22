@@ -39,8 +39,6 @@ ENV DEBFULLNAME=Foo
 ENV DEBEMAIL=foo@bar.org
 ENV MOODE_DIR=~/moode
 
-
-
 #########################################
 ##          DOWNLOAD PACKAGES          ##
 #########################################
@@ -63,18 +61,18 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 #COPY package.json /home/moode
 
 
-USER Foo
+USER root
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
 
 #COPY build.sh /pkgbuild/packages/moode-player
 #COPY station_manager.py /home/moode/www/util
-WORKDIR ~/moode
+WORKDIR /
 RUN ls
 # WORKDIR /pkgbuild/packages/moode-player
-USER root 
+#USER root 
 RUN chmod -R -v +x /pkgbuild/packages/moode-player
-USER Foo
+#USER Foo
 RUN /pkgbuild/packages/moode-player/build.sh
 # RUN ./postinstall.sh
 
