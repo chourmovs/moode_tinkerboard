@@ -48,6 +48,7 @@ ENV MOODE_DIR=~/moode
 # Download and install Dependencies & Main Software
 
 #SHELL ["/bin/bash", "-c"]
+USER root
 RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt-get update
 RUN apt-get upgrade 
@@ -62,7 +63,7 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 #COPY package.json /home/moode
 
 
-
+USER Foo
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
 
