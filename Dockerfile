@@ -52,7 +52,7 @@ RUN apt-get update
 RUN apt-get upgrade 
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30 sqlite3 rsync
-RUN apt-get install ruby-dev build-essential 
+RUN apt-get install --no-install-recommends -y ruby-dev build-essential 
 RUN gem i fpm -f
 
 #COPY package*.json .
