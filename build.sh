@@ -223,7 +223,7 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --license GPLv3 \
 --category sound \
 -S moode \
---iteration $DEBVER$DEBLOC --after-install $BUILD_ROOT_DIR/postinstall.sh \
+--iteration $DEBVER$DEBLOC --after-install $BUILD_ROOT_DIR/$POSTINSTALL \
 --config-files "'usr/share/camilladsp/configs'" \
 --config-files "'usr/share/camilladsp/coeffs'" \
 --depends alsa-cdsp \
