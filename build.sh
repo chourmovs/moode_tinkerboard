@@ -223,9 +223,9 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --category sound \
 -S moode \
 --iteration $DEBVER$DEBLOC \
---after-install "$BUILD_ROOT_DIR/postinstall.sh" \
---config-files "usr/share/camilladsp/configs" \
---config-files "usr/share/camilladsp/coeffs" \
+--after-install "'$BUILD_ROOT_DIR/postinstall.sh'" \
+--config-files "'usr/share/camilladsp/configs'" \
+--config-files "'usr/share/camilladsp/coeffs'" \
 --depends alsa-cdsp \
 --depends alsacap \
 --depends ashuffle \
