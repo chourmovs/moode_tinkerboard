@@ -11,6 +11,7 @@
 . ../../scripts/rebuilder.lib.sh
 
 PKG="moode-player_8.3.3-1moode1"
+POSTINSTALL="postinstall.sh"
 
 # PKG_SOURCE_GIT="https://github.com/moode-player/moode.git"
 # PKG_SOURCE_GIT_TAG="r760prod"
@@ -212,7 +213,7 @@ chmod -R 0755  $PKG_ROOT_DIR/usr/local/bin
 # ------------------------------------------------------------
 # 5. Create the package
 # Copy and fix version number is postinstall script
-cat $BASE_DIR/postinstall.sh | sed -e "s/^PKG_VERSION=.*/PKG_VERSION=\"$PKGVERSION\"/" > $BUILD_ROOT_DIR/postinstall.sh
+cat $BASE_DIR/postinstall.sh | sed -e "s/^PKG_VERSION=.*/PKG_VERSION=\"$PKGVERSION\"/" > $BUILD_ROOT_DIR/$POSTINSTALL
 #TODO: Critical look at the deps, remove unneeded.
 #TODO: Add license and readme, improve description
 
@@ -222,8 +223,7 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --license GPLv3 \
 --category sound \
 -S moode \
---iteration $DEBVER$DEBLOC \
---after-install "'$BUILD_ROOT_DIR/postinstall.sh'" \
+--iteration $DEBVER$DEBLOC --after-install $BUILD_ROOT_DIR/postinstall.sh \
 --config-files "'usr/share/camilladsp/configs'" \
 --config-files "'usr/share/camilladsp/coeffs'" \
 --depends alsa-cdsp \
