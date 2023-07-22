@@ -33,7 +33,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ENV DEBFULLNAME=Foo
 ENV DEBEMAIL=foo@bar.org
-ENV MOODE_DIR=/home/moode
+ENV MOODE_DIR=/moode
 
 
 
@@ -53,9 +53,9 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 #COPY package*.json .
 #RUN npm install 
 
-RUN mkdir /home/moode
-COPY package-lock.json /home/moode
-COPY package.json /home/moode
+#RUN mkdir /home/moode
+#COPY package-lock.json /home/moode
+#COPY package.json /home/moode
 
 #USER newuser
 #WORKDIR /home/newuser
@@ -63,9 +63,9 @@ COPY package.json /home/moode
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
 
-COPY build.sh /pkgbuild/packages/moode-player
-COPY station_manager.py /home/moode/www/util
-WORKDIR /home/moode
+#COPY build.sh /pkgbuild/packages/moode-player
+#COPY station_manager.py /home/moode/www/util
+WORKDIR /moode
 RUN ls
 WORKDIR /pkgbuild/packages/moode-player
 RUN chmod -R -v +x /pkgbuild/packages/moode-player
@@ -92,4 +92,4 @@ ENTRYPOINT ["./install.sh"]
 #########################################
 
 EXPOSE 8080
-# VOLUME /home/moode
+# VOLUME /moode
