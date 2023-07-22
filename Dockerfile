@@ -47,9 +47,9 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
-WORKDIR /moode
+WORKDIR /pkgbuild/packages/moode-player
 RUN ls
-RUN chmod -R -v +x /moode
+RUN chmod -R -v +x /moode-player
 RUN ./build.sh
 RUN ./postinstall.sh
 
