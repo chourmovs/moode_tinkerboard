@@ -30,12 +30,6 @@ ENV MOODE_DIR=/home/moode
 ##            NODE.JS STUFF            ##
 #########################################
 
-WORKDIR /usr/app
-COPY ./ /usr/app
-RUN npm install
-
-# Set up a default command
-CMD [ "npm","start" ]
 
 #########################################
 ##          DOWNLOAD PACKAGES          ##
@@ -49,8 +43,10 @@ RUN apt-get update
 RUN apt-get upgrade 
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
-#RUN npm cache clean --force
-#RUN npm install uuid@7.0.3 --force
+
+COPY package*.json .
+RUN npm install 
+
 RUN mkdir /home/moode
 COPY package-lock.json /home/moode
 COPY package.json /home/moode
