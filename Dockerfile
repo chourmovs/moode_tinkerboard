@@ -71,9 +71,9 @@ WORKDIR /home/Foo
 RUN ls
 # WORKDIR /pkgbuild/packages/moode-player
 #USER root 
-RUN chmod -R -v +x /pkgbuild/packages/moode-player
+RUN chmod -R -v +x /home/Foo/pkgbuild/packages/moode-player
 #USER Foo
-RUN /pkgbuild/packages/moode-player/build.sh
+RUN /home/Foo/pkgbuild/packages/moode-player/build.sh
 # RUN ./postinstall.sh
 
 #########################################
