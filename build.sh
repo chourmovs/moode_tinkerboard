@@ -223,8 +223,6 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --category sound \
 -S moode \
 --iteration $DEBVER$DEBLOC \
--m 'moodeaudio.org' \
---description 'moOde audio player' \
 --after-install $BUILD_ROOT_DIR/postinstall.sh \
 --before-remove $BASE_DIR/preremove.sh \
 --config-files usr/share/camilladsp/configs \
