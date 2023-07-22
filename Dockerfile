@@ -31,9 +31,12 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 ENV DEBIAN_FRONTEND=noninteractive 
 
+USER Foo
+WORKDIR /home/Foo
+
 ENV DEBFULLNAME=Foo
 ENV DEBEMAIL=foo@bar.org
-ENV MOODE_DIR=/
+ENV MOODE_DIR=~/moode
 
 
 
@@ -57,8 +60,7 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 #COPY package-lock.json /home/moode
 #COPY package.json /home/moode
 
-#USER newuser
-#WORKDIR /home/newuser
+
 
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
