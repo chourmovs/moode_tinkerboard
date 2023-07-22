@@ -1,6 +1,6 @@
 FROM balenalib/asus-tinker-board-debian:latest-build
-FROM ubuntu:latest AS Builder
-FROM node:alpine
+FROM balenalib/armv7hf-debian AS Builder
+#FROM node:alpine
 
 #########################################
 ##             SET LABELS              ##
@@ -46,7 +46,7 @@ CMD [ "npm","start" ]
 #SHELL ["/bin/bash", "-c"]
 RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt-get update
-#RUN apt-get upgrade 
+RUN apt-get upgrade 
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
 #RUN npm cache clean --force
