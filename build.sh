@@ -23,6 +23,93 @@ root/mnt/.=/mnt \
 root/usr/.=/usr \
 root/lib/.=/lib \
 root/etc/.=/etc"
+DEPENDS="--depends alsa-cdsp \
+--depends alsacap \
+--depends ashuffle \
+--depends avahi-utils \
+--depends bluez \
+--depends bluez-alsa-utils \
+--depends bluez-firmware \
+--depends boss2-oled-p3 \
+--depends bs2b-ladspa \
+--depends camilladsp \
+--depends camillagui \
+--depends caps \
+--depends chromium-browser \
+--depends dnsmasq \
+--depends dos2unix \
+--depends exfat-fuse \
+--depends expect \
+--depends ffmpeg \
+--depends flac \
+--depends fonts-arphic-ukai \
+--depends fonts-arphic-uming \
+--depends fonts-ipafont-gothic \
+--depends fonts-ipafont-mincho \
+--depends fonts-unfonts-core \
+--depends fonts-unfonts-core \
+--depends haveged \
+--depends hostapd \
+--depends id3v2 \
+--depends inotify-tools \
+--depends libasound2-plugin-bluez \
+--depends libasound2-plugin-equal \
+--depends libatasmart4 \
+--depends libbs2b0 \
+--depends libconfuse-dev \
+--depends libdbus-glib-1-2 \
+--depends libdbus-glib-1-dev \
+--depends libdevmapper-event1.02.1 \
+--depends libgudev-1.0-0 \
+--depends libmediainfo0v5 \
+--depends libmms0 \
+--depends libnss-winbind \
+--depends librespot \
+--depends libsgutils2-2 \
+--depends libtool-bin \
+--depends libzen0v5 \
+--depends lsb-release \
+--depends mediainfo \
+--depends minidlna \
+--depends mpc \
+--depends mpd \
+--depends mpd2cdspvolume \
+--depends nfs-kernel-server \
+--depends nginx \
+--depends nmap \
+--depends ntfs-3g \
+--depends php-fpm \
+--depends php-sqlite3 \
+--depends php-yaml \
+--depends php7.4-gd \
+--depends pi-bluetooth \
+--depends python3-dbus \
+--depends python3-libupnpp \
+--depends python3-musicpd \
+--depends python3-pip \
+--depends python3-rpi.gpio \
+--depends python3-setuptools \
+--depends rpi-update \
+--depends runonce \
+--depends samba \
+--depends shairport-sync \
+--depends shellinabox \
+--depends smbclient \
+--depends sox \
+--depends sqlite3 \--depends squashfs-tools \
+--depends squeezelite \
+--depends sysstat \
+--depends telnet \
+--depends triggerhappy \
+--depends trx \
+--depends udevil \
+--depends udisks-glue \
+--depends upmpdcli \
+--depends winbind \
+--depends xfsprogs \
+--depends xinit \
+--depends xorg \
+--depends zip"
 
 # PKG_SOURCE_GIT="https://github.com/moode-player/moode.git"
 # PKG_SOURCE_GIT_TAG="r760prod"
@@ -230,100 +317,8 @@ cat $BASE_DIR/postinstall.sh | sed -e "s/^PKG_VERSION=.*/PKG_VERSION=\"$PKGVERSI
 
 # Don't include packages as dependency, if those package depends on the used kernel (like drivers).
 # Install those separate.
-fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION -S moode --iteration $DEBVER$DEBLOC \
---license GPLv3 \
---category sound \
---after-install $POSTINSTALL2 \
---config-files $CAMILLA1 \
---config-files $CAMILLA2 \
---config-files $CONFIG2 \
---depends alsa-cdsp \
---depends alsacap \
---depends ashuffle \
---depends avahi-utils \
---depends bluez \
---depends bluez-alsa-utils \
---depends bluez-firmware \
---depends boss2-oled-p3 \
---depends bs2b-ladspa \
---depends camilladsp \
---depends camillagui \
---depends caps \
---depends chromium-browser \
---depends dnsmasq \
---depends dos2unix \
---depends exfat-fuse \
---depends expect \
---depends ffmpeg \
---depends flac \
---depends fonts-arphic-ukai \
---depends fonts-arphic-uming \
---depends fonts-ipafont-gothic \
---depends fonts-ipafont-mincho \
---depends fonts-unfonts-core \
---depends fonts-unfonts-core \
---depends haveged \
---depends hostapd \
---depends id3v2 \
---depends inotify-tools \
---depends libasound2-plugin-bluez \
---depends libasound2-plugin-equal \
---depends libatasmart4 \
---depends libbs2b0 \
---depends libconfuse-dev \
---depends libdbus-glib-1-2 \
---depends libdbus-glib-1-dev \
---depends libdevmapper-event1.02.1 \
---depends libgudev-1.0-0 \
---depends libmediainfo0v5 \
---depends libmms0 \
---depends libnss-winbind \
---depends librespot \
---depends libsgutils2-2 \
---depends libtool-bin \
---depends libzen0v5 \
---depends lsb-release \
---depends mediainfo \
---depends minidlna \
---depends mpc \
---depends mpd \
---depends mpd2cdspvolume \
---depends nfs-kernel-server \
---depends nginx \
---depends nmap \
---depends ntfs-3g \
---depends php-fpm \
---depends php-sqlite3 \
---depends php-yaml \
---depends php7.4-gd \
---depends pi-bluetooth \
---depends python3-dbus \
---depends python3-libupnpp \
---depends python3-musicpd \
---depends python3-pip \
---depends python3-rpi.gpio \
---depends python3-setuptools \
---depends rpi-update \
---depends runonce \
---depends samba \
---depends shairport-sync \
---depends shellinabox \
---depends smbclient \
---depends sox \
---depends sqlite3 \--depends squashfs-tools \
---depends squeezelite \
---depends sysstat \
---depends telnet \
---depends triggerhappy \
---depends trx \
---depends udevil \
---depends udisks-glue \
---depends upmpdcli \
---depends winbind \
---depends xfsprogs \
---depends xinit \
---depends xorg \
---depends zip
+fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION -S moode --iteration $DEBVER$DEBLOC --license GPLv3 --category sound --after-install $POSTINSTALL2 --config-files $CAMILLA1 --config-files $CAMILLA2 --config-files $CONFIG2 $DEPENDS
+
 
 if [[ $? -gt 0 ]]
 then
