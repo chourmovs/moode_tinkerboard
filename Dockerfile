@@ -65,9 +65,9 @@ USER root
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
 
-COPY build.sh ~/pkgbuild/packages/moode-player
+COPY build.sh /home/Foo/pkgbuild/packages/moode-player
 #COPY station_manager.py /home/moode/www/util
-WORKDIR /home/Foo/moode
+WORKDIR /home/Foo/pkgbuild
 RUN ls
 # WORKDIR /pkgbuild/packages/moode-player
 # USER root 
