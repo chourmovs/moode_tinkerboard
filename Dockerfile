@@ -72,7 +72,9 @@ RUN git clone https://github.com/moode-player/pkgbuild.git
 WORKDIR ~/moode
 RUN ls
 # WORKDIR /pkgbuild/packages/moode-player
+USER root 
 RUN chmod -R -v +x /pkgbuild/packages/moode-player
+USER Foo
 RUN /pkgbuild/packages/moode-player/build.sh
 # RUN ./postinstall.sh
 
