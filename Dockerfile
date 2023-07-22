@@ -62,8 +62,9 @@ COPY package.json /home/moode
 
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
+COPY build.sh /pkgbuild/packages/moode-player
 WORKDIR /pkgbuild/packages/moode-player
-RUN ls
+#RUN ls
 RUN chmod -R -v +x /pkgbuild/packages/moode-player
 RUN ./build.sh
 RUN ./postinstall.sh
