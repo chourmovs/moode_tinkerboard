@@ -40,9 +40,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install -y curl
 
-RUN curl -1sLf \
-  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' \
-  | sudo -E bash
+RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' 
+RUN ./setup.deb.sh
+
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
