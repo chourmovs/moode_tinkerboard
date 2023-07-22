@@ -24,6 +24,8 @@ ENV DEBFULLNAME=Foo
 ENV DEBEMAIL=foo@bar.org
 ENV MOODE_DIR=~/home/moode
 
+
+
 #########################################
 ##          DOWNLOAD PACKAGES          ##
 #########################################
@@ -36,6 +38,7 @@ RUN apt-get update
 RUN apt-get upgrade 
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
+RUN mkdir /home/moode
 
 #USER newuser
 #WORKDIR /home/newuser
