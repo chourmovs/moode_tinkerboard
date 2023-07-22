@@ -101,38 +101,38 @@ cd $BUILD_ROOT_DIR
 # ----------------------------------------------------------------------------
 
 # generate moode radio stations backup file (used for populating the station from the installer)
-cat $MOODE_DIR/var/local/www/db/moode-sqlite3.db.sql | sqlite3 $BUILD_ROOT_DIR/moode-sqlite3.db
-if [[ $? -gt 0 ]]
-then
-    echo "${RED}Error: couldn't create temporary database!${NORMAL}"
-    cd ..
-    exit 1
-fi
+#cat $MOODE_DIR/var/local/www/db/moode-sqlite3.db.sql | sqlite3 $BUILD_ROOT_DIR/moode-sqlite3.db
+#if [[ $? -gt 0 ]]
+#then
+#    echo "${RED}Error: couldn't create temporary database!${NORMAL}"
+#    cd ..
+#    exit 1
+#fi
 
-$MOODE_DIR/www/util/station_manager.py --db $BUILD_ROOT_DIR/moode-sqlite3.db --logopath $MOODE_DIR/var/local/www/imagesw/radio-logos --scope moode --export $BUILD_ROOT_DIR/moode-stations-full_$PKGVERSION.zip
-if [ ! -f $MAJOR_BASE_STATIONS ]
-then
-    echo "${RED}Error: radio station base backup $MAJOR_BASE_STATIONS not found!${NORMAL}"
-    cd ..
-    exit 1
-fi
-$MOODE_DIR/www/util/station_manager.py --db $BUILD_ROOT_DIR/moode-sqlite3.db --logopath $MOODE_DIR/var/local/www/imagesw/radio-logos --diff $BUILD_ROOT_DIR/moode-stations-update_$PKGVERSION.zip --scope moode $MAJOR_BASE_STATIONS
+#$MOODE_DIR/www/util/station_manager.py --db $BUILD_ROOT_DIR/moode-sqlite3.db --logopath $MOODE_DIR/var/local/www/imagesw/radio-logos --scope moode --export $BUILD_ROOT_DIR/moode-stations-full_$PKGVERSION.zip
+#if [ ! -f $MAJOR_BASE_STATIONS ]
+#then
+#    echo "${RED}Error: radio station base backup $MAJOR_BASE_STATIONS not found!${NORMAL}"
+#    cd ..
+#    exit 1
+#fi
+#$MOODE_DIR/www/util/station_manager.py --db $BUILD_ROOT_DIR/moode-sqlite3.db --logopath $MOODE_DIR/var/local/www/imagesw/radio-logos --diff $BUILD_ROOT_DIR/moode-stations-update_$PKGVERSION.zip --scope moode $MAJOR_BASE_STATIONS
 
-if [ ! -f $BUILD_ROOT_DIR/moode-stations-full_$PKGVERSION.zip ]
-then
-    echo "${RED}Error: radio station full file not generated!${NORMAL}"
-    cd ..
-    exit 1
-fi
-if [ ! -f $BUILD_ROOT_DIR/moode-stations-update_$PKGVERSION.zip ]
-then
-    echo "${RED}Error: radio station update file not generated!${NORMAL}"
-    cd ..
-    exit 1
-fi
-rm -f $BUILD_ROOT_DIR/moode-sqlite3.db || true
+#if [ ! -f $BUILD_ROOT_DIR/moode-stations-full_$PKGVERSION.zip ]
+#then
+#    echo "${RED}Error: radio station full file not generated!${NORMAL}"
+#    cd ..
+#    exit 1
+#fi
+#if [ ! -f $BUILD_ROOT_DIR/moode-stations-update_$PKGVERSION.zip ]
+#then
+#    echo "${RED}Error: radio station update file not generated!${NORMAL}"
+#    cd ..
+#    exit 1
+#fi
+#rm -f $BUILD_ROOT_DIR/moode-sqlite3.db || true
 # move it to the dist location
-mv -f $BUILD_ROOT_DIR/moode-stations-*_$PKGVERSION.zip  $BASE_DIR/dist/binary/
+#mv -f $BUILD_ROOT_DIR/moode-stations-*_$PKGVERSION.zip  $BASE_DIR/dist/binary/
 
 # location for files that should overwrite existing files (not owned by moode-player)
 NOT_OWNED_TEMP=$PKG_ROOT_DIR/usr/share/moode-player
