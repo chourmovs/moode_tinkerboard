@@ -34,7 +34,7 @@ ENV MOODE_DIR=~/home/moode
 RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt-get update
 RUN apt-get upgrade 
-RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json
+RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
 
 #USER newuser
