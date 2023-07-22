@@ -41,8 +41,8 @@ RUN apt-get update
 RUN apt-get upgrade 
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json
 
-USER newuser
-WORKDIR /home/newuser
+#USER newuser
+#WORKDIR /home/newuser
 
 RUN git clone https://github.com/moode-player/moode.git
 WORKDIR /moode
