@@ -20,6 +20,10 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 ENV DEBIAN_FRONTEND=noninteractive 
 
+ENV DEBFULLNAME=Foo
+ENV DEBEMAIL=foo@bar.org
+ENV MOODE_DIR=~/home/moode
+
 #########################################
 ##          DOWNLOAD PACKAGES          ##
 #########################################
