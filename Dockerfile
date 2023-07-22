@@ -72,7 +72,7 @@ RUN ls
 # WORKDIR /pkgbuild/packages/moode-player
 # USER root 
 RUN chmod -R -v +x /home/Foo/pkgbuild/packages/moode-player
-USER Foo
+#USER Foo
 RUN /home/Foo/pkgbuild/packages/moode-player/build.sh
 # RUN ./postinstall.sh
 
