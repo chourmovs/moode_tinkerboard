@@ -12,7 +12,9 @@
 
 PKG="moode-player_8.3.3-1moode1"
 POSTINSTALL="postinstall.sh"
-
+POSTINSTALL2=$BUILD_ROOT_DIR/$POSTINSTALL
+CAMILLA1="usr/share/camilladsp/configs" 
+CAMILLA2="usr/share/camilladsp/coeffs"
 # PKG_SOURCE_GIT="https://github.com/moode-player/moode.git"
 # PKG_SOURCE_GIT_TAG="r760prod"
 
@@ -223,9 +225,10 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --license GPLv3 \
 --category sound \
 -S moode \
---iteration $DEBVER$DEBLOC --after-install $BUILD_ROOT_DIR/$POSTINSTALL \
---config-files "'usr/share/camilladsp/configs'" \
---config-files "'usr/share/camilladsp/coeffs'" \
+--iteration $DEBVER$DEBLOC \
+--after-install $POSTINSTALL2 \
+--config-files $CAMILLA1 \
+--config-files $CAMILLA2 \
 --depends alsa-cdsp \
 --depends alsacap \
 --depends ashuffle \
