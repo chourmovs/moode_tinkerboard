@@ -37,9 +37,9 @@ ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 
 #SHELL ["/bin/bash", "-c"]
 RUN echo "**** Install Dependencies & Main Software ****" 
-RUN apt update
-RUN apt upgrade
-RUN apt install git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get  --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json
 # RUN pacman -S --noconfirm gtk2 librsvg ocaml-num camlp4 lablgtk2 gd miniupnpc libnatpmp libminiupnpc.so
 USER newuser
 WORKDIR /home/newuser
