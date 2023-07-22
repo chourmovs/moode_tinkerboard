@@ -44,6 +44,8 @@ RUN apt-get update
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
 RUN mkdir /home/moode
+COPY /home/moode /package-lock.json
+COPY /home/moode /package.json
 
 #USER newuser
 #WORKDIR /home/newuser
