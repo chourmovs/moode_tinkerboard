@@ -15,9 +15,9 @@ on:
 
 env:
   # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
+  REGISTRY: docker.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: chourmovs/moode_tinkerboard
+  IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:
