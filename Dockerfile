@@ -41,8 +41,9 @@ ENV MOODE_DIR=/home/moode
 RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt-get update
 #RUN apt-get upgrade 
-RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js
+RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
+RUN npm cache clean --force
 RUN npm install uuid@7.0.3 --force
 RUN mkdir /home/moode
 COPY package-lock.json /home/moode
