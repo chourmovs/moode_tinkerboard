@@ -29,21 +29,6 @@ ENV MOODE_DIR=/home/moode
 ##            NODE.JS STUFF            ##
 #########################################
 
-# Use NodeJS server for the app.
-FROM node:12
-# Copy files as a non-root user. The `node` user is built in the Node image.
-WORKDIR /usr/src/app
-RUN chown node:node ./
-USER node
-# Defaults to production, docker-compose overrides this to development on build and run.
-ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
-# Install dependencies first, as they change less often than code.
-COPY package.json package-lock.json* ./
-RUN npm ci && npm cache clean --force
-COPY ./src ./src
-# Copy compiled CSS styles from builder image.
-COPY --from=builder /dist/css ./dist/css
 
 
 #########################################
@@ -55,8 +40,8 @@ COPY --from=builder /dist/css ./dist/css
 #SHELL ["/bin/bash", "-c"]
 RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt-get update
-RUN apt-get upgrade 
-RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl
+#RUN apt-get upgrade 
+RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
 RUN mkdir /home/moode
 
