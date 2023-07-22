@@ -33,7 +33,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN useradd -ms /bin/bash Foo
 USER Foo
-WORKDIR /home/Foo
+WORKDIR /home/Foo/
 
 ENV DEBFULLNAME=Foo
 ENV DEBEMAIL=foo@bar.org
@@ -67,7 +67,7 @@ RUN git clone https://github.com/moode-player/pkgbuild.git
 
 #COPY build.sh /pkgbuild/packages/moode-player
 #COPY station_manager.py /home/moode/www/util
-WORKDIR /home/Foo
+WORKDIR /home/Foo/moode
 RUN ls
 # WORKDIR /pkgbuild/packages/moode-player
 # USER root 
