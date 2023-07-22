@@ -1,13 +1,3 @@
-#########################################
-##            NODE.JS STUFF            ##
-#########################################
-#FROM node:12
-#WORKDIR /app
-#COPY package.json .
-#COPY . .
-#RUN npm install
-
-
 FROM balenalib/asus-tinker-board-debian:latest-build
 FROM ubuntu:latest AS Builder
 
@@ -31,8 +21,6 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 ENV DEBIAN_FRONTEND=noninteractive 
 
-
-
 #########################################
 ##          DOWNLOAD PACKAGES          ##
 #########################################
@@ -41,7 +29,6 @@ RUN apt-get update
 RUN apt-get install -y curl
 
 RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=ARMv7l bash -
-
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
