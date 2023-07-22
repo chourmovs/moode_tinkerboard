@@ -25,6 +25,26 @@ ENV DEBEMAIL=foo@bar.org
 ENV MOODE_DIR=/home/moode
 
 
+#########################################
+##            NODE.JS STUFF            ##
+#########################################
+
+# Use NodeJS server for the app.
+FROM node:12
+# Copy files as a non-root user. The `node` user is built in the Node image.
+WORKDIR /usr/src/app
+RUN chown node:node ./
+USER node
+# Defaults to production, docker-compose overrides this to development on build and run.
+ARG NODE_ENV=production
+ENV NODE_ENV $NODE_ENV
+# Install dependencies first, as they change less often than code.
+COPY package.json package-lock.json* ./
+RUN npm ci && npm cache clean --force
+COPY ./src ./src
+# Copy compiled CSS styles from builder image.
+COPY --from=builder /dist/css ./dist/css
+
 
 #########################################
 ##          DOWNLOAD PACKAGES          ##
@@ -71,5 +91,4 @@ ENTRYPOINT ["./install.sh"]
 #########################################
 
 EXPOSE 8080
-# VOLUME /var/lib/mldonkey /mnt/mldonkey_tmp /mnt/mldonkey_completed
-
+# VOLUME /home/moode
