@@ -218,9 +218,14 @@ cat $BASE_DIR/postinstall.sh | sed -e "s/^PKG_VERSION=.*/PKG_VERSION=\"$PKGVERSI
 
 # Don't include packages as dependency, if those package depends on the used kernel (like drivers).
 # Install those separate.
-fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION --license GPLv3 --category sound -S moode --iteration $DEBVER$DEBLOC --after-install $BUILD_ROOT_DIR/postinstall.sh \
---config-files usr/share/camilladsp/configs \
---config-files usr/share/camilladsp/coeffs \
+fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
+--license GPLv3 \
+--category sound \
+-S moode \
+--iteration $DEBVER$DEBLOC \
+--after-install "$BUILD_ROOT_DIR/postinstall.sh" \
+--config-files "usr/share/camilladsp/configs" \
+--config-files "usr/share/camilladsp/coeffs" \
 --depends alsa-cdsp \
 --depends alsacap \
 --depends ashuffle \
