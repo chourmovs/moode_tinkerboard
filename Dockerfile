@@ -20,15 +20,6 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 ENV DEBIAN_FRONTEND=noninteractive 
 
-# Copie le binaire shell Bash depuis une autre image
-#COPY --from=alpine:latest /bin/bash /bin/bash
-
-# Définit /bin/bash comme shell par défaut pour l'image
-#SHELL ["/bin/bash", "--login", "-c"]
-
-# Commande par défaut pour lancer un shell interactif
-#CMD ["/bin/bash"]
-
 #########################################
 ##          DOWNLOAD PACKAGES          ##
 #########################################
@@ -49,7 +40,7 @@ RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
 WORKDIR /pkgbuild/packages/moode-player
 RUN ls
-RUN chmod -R -v +x /moode-player
+RUN chmod -R -v +x /pkgbuild/packages/moode-player
 RUN ./build.sh
 RUN ./postinstall.sh
 
