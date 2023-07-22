@@ -1,3 +1,13 @@
+#########################################
+##            NODE.JS STUFF            ##
+#########################################
+FROM node:12
+WORKDIR /app
+COPY package.json .
+COPY . .
+RUN npm install
+
+
 FROM balenalib/asus-tinker-board-debian:latest-build
 FROM ubuntu:latest AS Builder
 #FROM node:alpine
@@ -26,10 +36,6 @@ ENV DEBEMAIL=foo@bar.org
 ENV MOODE_DIR=/home/moode
 
 
-#########################################
-##            NODE.JS STUFF            ##
-#########################################
-
 
 #########################################
 ##          DOWNLOAD PACKAGES          ##
@@ -44,8 +50,8 @@ RUN apt-get upgrade
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
 RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30
 
-COPY package*.json .
-RUN npm install 
+#COPY package*.json .
+#RUN npm install 
 
 RUN mkdir /home/moode
 COPY package-lock.json /home/moode
