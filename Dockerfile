@@ -17,7 +17,16 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 
 # Set correct environment variables
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
-ENV DEBIAN_FRONTEND=noninteractive 
+#ENV DEBIAN_FRONTEND=noninteractive 
+
+# Copie le binaire shell Bash depuis une autre image
+COPY --from=alpine:latest /bin/bash /bin/bash
+
+# Définit /bin/bash comme shell par défaut pour l'image
+SHELL ["/bin/bash", "--login", "-c"]
+
+# Commande par défaut pour lancer un shell interactif
+CMD ["/bin/bash"]
 
 #########################################
 ##          DOWNLOAD PACKAGES          ##
@@ -25,7 +34,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Download and install Dependencies & Main Software
 
-SHELL ["/bin/bash", "-c"]
+#SHELL ["/bin/bash", "-c"]
 RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt update
 RUN apt upgrade
