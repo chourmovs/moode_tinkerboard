@@ -31,6 +31,7 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 ENV DEBIAN_FRONTEND=noninteractive 
 
+RUN useradd -ms /bin/bash Foo
 USER Foo
 WORKDIR /home/Foo
 
