@@ -47,7 +47,7 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 
 RUN git clone https://github.com/moode-player/moode.git
 WORKDIR /moode
-RUN ./install.sh
+RUN install.sh
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
