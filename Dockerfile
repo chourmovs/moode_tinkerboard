@@ -47,7 +47,9 @@ RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificat
 
 RUN git clone https://github.com/moode-player/moode.git
 WORKDIR /moode
-RUN install.sh
+RUN ls
+RUN chmod -R -v +x /moode
+RUN ./install.sh
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
@@ -61,8 +63,8 @@ RUN install.sh
 #RUN chmod -R -v +x /docker-entrypoint.d
 # /container/tool/install-service
 
-#WORKDIR /docker-entrypoint.d/moode/
-#ENTRYPOINT ["./install.sh"]
+WORKDIR /docker-entrypoint.d/moode/
+ENTRYPOINT ["./install.sh"]
 
 #########################################
 ##         EXPORTS AND VOLUMES         ##
