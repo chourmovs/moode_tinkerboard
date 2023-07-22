@@ -40,17 +40,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install -y curl
 
-RUN apt-get install -y debian-keyring  # debian only
-RUN apt-get install -y debian-archive-keyring  # debian only
-RUN apt-get install -y apt-transport-https
-# For Debian Stretch, Ubuntu 16.04 and later
-RUN keyring_location=/usr/share/keyrings/moodeaudio-m8y-archive-keyring.gpg
-# For Debian Jessie, Ubuntu 15.10 and earlier
-keyring_location=/etc/apt/trusted.gpg.d/moodeaudio-m8y.gpg
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/moodeaudio/m8y/gpg.E5A251A46C58117E.key' |  gpg --dearmor >> ${keyring_location}
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/moodeaudio/m8y/config.deb.txt?distro=raspbian&codename=bullseye' > /etc/apt/sources.list.d/moodeaudio-m8y.list
-RUN apt-get update
-sudo apt-get install moode-player=8.3.3-1moode1
+RUN curl -1sLf \
+  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' \
+  | sudo -E bash
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
