@@ -230,12 +230,13 @@ cat $BASE_DIR/postinstall.sh | sed -e "s/^PKG_VERSION=.*/PKG_VERSION=\"$PKGVERSI
 
 # Don't include packages as dependency, if those package depends on the used kernel (like drivers).
 # Install those separate.
-fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
--S moode \
---iteration $DEBVER$DEBLOC \
+fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION -S moode --iteration $DEBVER$DEBLOC \
+--license GPLv3 \
+--category sound \
 --after-install $POSTINSTALL2 \
 --config-files $CAMILLA1 \
 --config-files $CAMILLA2 \
+--config-files $CONFIG2 \
 --depends alsa-cdsp \
 --depends alsacap \
 --depends ashuffle \
@@ -309,8 +310,7 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --depends shellinabox \
 --depends smbclient \
 --depends sox \
---depends sqlite3 \
---depends squashfs-tools \
+--depends sqlite3 \--depends squashfs-tools \
 --depends squeezelite \
 --depends sysstat \
 --depends telnet \
@@ -323,11 +323,7 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --depends xfsprogs \
 --depends xinit \
 --depends xorg \
---depends zip \
---config-files $CONFIG2 \
---license GPLv3 \
---category sound
-
+--depends zip
 
 if [[ $? -gt 0 ]]
 then
