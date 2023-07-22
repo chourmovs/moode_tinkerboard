@@ -18,7 +18,7 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 
 # Set correct environment variables
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
-#ENV DEBIAN_FRONTEND=noninteractive 
+ENV DEBIAN_FRONTEND=noninteractive 
 
 # Copie le binaire shell Bash depuis une autre image
 #COPY --from=alpine:latest /bin/bash /bin/bash
@@ -40,13 +40,9 @@ RUN echo "**** Install Dependencies & Main Software ****"
 RUN apt-get update
 RUN apt-get upgrade 
 RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json
-# RUN pacman -S --noconfirm gtk2 librsvg ocaml-num camlp4 lablgtk2 gd miniupnpc libnatpmp libminiupnpc.so
+
 USER newuser
 WORKDIR /home/newuser
-
-#RUN wget -O mldonkey-3.1.7.2-2-x86_64.pkg.tar.zst https://dl.rexnvs.com/dl/mldonkey/mldonkey-3.1.7.2-2-x86_64.pkg.tar.zst
-#USER root
-#RUN pacman -U --noconfirm mldonkey-3.1.7.2-2-x86_64.pkg.tar.zst
 
 RUN git clone https://github.com/moode-player/moode.git
 WORKDIR /moode
