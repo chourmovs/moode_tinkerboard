@@ -230,7 +230,7 @@ cat $BASE_DIR/postinstall.sh | sed -e "s/^PKG_VERSION=.*/PKG_VERSION=\"$PKGVERSI
 
 # Don't include packages as dependency, if those package depends on the used kernel (like drivers).
 # Install those separate.
-fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \ 
+fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 -S moode \
 --iteration $DEBVER$DEBLOC \
 --after-install $POSTINSTALL2 \
@@ -326,7 +326,7 @@ fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --depends zip \
 --config-files $CONFIG2 \
 --license GPLv3 \
---category sound \
+--category sound
 
 
 if [[ $? -gt 0 ]]
