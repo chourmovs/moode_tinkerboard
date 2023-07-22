@@ -1,4 +1,4 @@
-FROM balenalib/asus-tinker-board-debian:latest
+FROM balenalib/asus-tinker-board-debian:latest-build
 
 #########################################
 ##             SET LABELS              ##
