@@ -1,5 +1,5 @@
 FROM balenalib/asus-tinker-board-debian:latest-build
-FROM alpine:3.14 AS Builder
+FROM ubuntu:latest AS Builder
 
 #########################################
 ##             SET LABELS              ##
