@@ -230,7 +230,11 @@ cat $BASE_DIR/postinstall.sh | sed -e "s/^PKG_VERSION=.*/PKG_VERSION=\"$PKGVERSI
 
 # Don't include packages as dependency, if those package depends on the used kernel (like drivers).
 # Install those separate.
-fpm --config-files $CAMILLA1 \
+fpm -s dir -t deb -n $PKGNAME -v $PKGVERSION \ 
+-S moode \
+--iteration $DEBVER$DEBLOC \
+--after-install $POSTINSTALL2 \
+--config-files $CAMILLA1 \
 --config-files $CAMILLA2 \
 --depends alsa-cdsp \
 --depends alsacap \
@@ -321,12 +325,8 @@ fpm --config-files $CAMILLA1 \
 --depends xorg \
 --depends zip \
 --config-files $CONFIG2 \
--s dir -t deb -n $PKGNAME -v $PKGVERSION \
 --license GPLv3 \
 --category sound \
--S moode \
---iteration $DEBVER$DEBLOC \
---after-install $POSTINSTALL2 \
 
 
 if [[ $? -gt 0 ]]
