@@ -25,7 +25,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Download and install Dependencies & Main Software
 
-RUN echo "**** Install Dependencies & Main Software ****" 
+#RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt update
 RUN apt upgrade
 RUN apt install git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json
