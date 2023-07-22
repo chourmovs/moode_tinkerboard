@@ -1,5 +1,5 @@
 FROM balenalib/asus-tinker-board-debian:latest-build
-FROM ubuntu:latest AS Builder
+# FROM ubuntu:latest AS Builder
 
 
 #########################################
