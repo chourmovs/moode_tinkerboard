@@ -10,7 +10,7 @@
 
 FROM balenalib/asus-tinker-board-debian:latest-build
 FROM ubuntu:latest AS Builder
-#FROM node:alpine
+
 
 #########################################
 ##             SET LABELS              ##
@@ -31,52 +31,25 @@ LABEL maintainer="chourmovs <chourmovs@gmail.com>"
 ENV LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 ENV DEBIAN_FRONTEND=noninteractive 
 
-RUN useradd -ms /bin/bash Foo
-USER Foo
-WORKDIR /home/Foo/
 
-ENV DEBFULLNAME=Foo
-ENV DEBEMAIL=foo@bar.org
-ENV MOODE_DIR=/home/Foo/moode
 
 #########################################
 ##          DOWNLOAD PACKAGES          ##
 #########################################
 
-# Download and install Dependencies & Main Software
-
-#SHELL ["/bin/bash", "-c"]
-USER root
-RUN echo "**** Install Dependencies & Main Software ****" 
 RUN apt-get update
-RUN apt-get upgrade 
-RUN apt-get install --no-install-recommends -y git php-fpm nginx mpd alsa-utils php-curl php-gd php-mbstring php-json sudo curl node.js npm
-RUN apt-get install --no-install-recommends -y apt-transport-https ca-certificates libgnutls30 sqlite3 rsync squashfs-tools
-RUN apt-get install --no-install-recommends -y ruby-dev build-essential 
-RUN gem i fpm -f
+RUN apt-get install -y curl
 
-#COPY package*.json .
-#RUN npm install 
-
-#RUN mkdir /home/moode
-COPY package-lock.json /home/Foo
-COPY package.json /home/Foo
-
-
-USER root
-RUN git clone https://github.com/moode-player/moode.git
-RUN git clone https://github.com/moode-player/pkgbuild.git
-
-COPY build.sh /home/Foo/pkgbuild/packages/moode-player
-#COPY station_manager.py /home/moode/www/util
-WORKDIR /home/Foo/pkgbuild
-RUN ls
-# WORKDIR /pkgbuild/packages/moode-player
-# USER root 
-RUN chmod -R -v +x /home/Foo/pkgbuild/packages/moode-player
-#USER Foo
-RUN /home/Foo/pkgbuild/packages/moode-player/build.sh
-# RUN ./postinstall.sh
+RUN apt-get install -y debian-keyring  # debian only
+RUN apt-get install -y debian-archive-keyring  # debian only
+RUN apt-get install -y apt-transport-https
+# For Debian Stretch, Ubuntu 16.04 and later
+RUN keyring_location=/usr/share/keyrings/moodeaudio-m8y-archive-keyring.gpg
+# For Debian Jessie, Ubuntu 15.10 and earlier
+keyring_location=/etc/apt/trusted.gpg.d/moodeaudio-m8y.gpg
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/moodeaudio/m8y/gpg.E5A251A46C58117E.key' |  gpg --dearmor >> ${keyring_location}
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/moodeaudio/m8y/config.deb.txt?distro=raspbian&codename=bullseye' > /etc/apt/sources.list.d/moodeaudio-m8y.list
+RUN apt-get update
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
