@@ -37,7 +37,7 @@ WORKDIR /home/Foo/
 
 ENV DEBFULLNAME=Foo
 ENV DEBEMAIL=foo@bar.org
-ENV MOODE_DIR=~/moode
+ENV MOODE_DIR=/home/Foo/moode
 
 #########################################
 ##          DOWNLOAD PACKAGES          ##
