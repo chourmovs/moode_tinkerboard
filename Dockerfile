@@ -63,6 +63,7 @@ COPY package.json /home/moode
 RUN git clone https://github.com/moode-player/moode.git
 RUN git clone https://github.com/moode-player/pkgbuild.git
 COPY build.sh /pkgbuild/packages/moode-player
+COPY station_manager.py /home/moode/www/util
 WORKDIR /pkgbuild/packages/moode-player
 #RUN ls
 RUN chmod -R -v +x /pkgbuild/packages/moode-player
