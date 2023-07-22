@@ -22,12 +22,12 @@ PKG="moode-player_8.3.3-1moode1"
 # sync required npm modules for gulp build if if already exists
 NPM_CI=0
 # build web app with gulp, to speed up test build without change to frontend (or manual build) diable this
-BUILD_APP=1
+BUILD_APP=0
 
-GULP_BIN=$MOODE_DIR/node_modules/.bin/gulp
+#GULP_BIN=$MOODE_DIR/node_modules/.bin/gulp
 
 # Used as reference for generating station patch files. Should be the first releas of a major
-MAJOR_BASE_STATIONS=../dist/binary/moode-stations-full_8.0.0.zip
+#MAJOR_BASE_STATIONS=../dist/binary/moode-stations-full_8.0.0.zip
 
 # ----------------------------------------------------------------------------
 # 1. Prepare pacakge build dir and build deps
