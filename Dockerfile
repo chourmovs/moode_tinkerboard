@@ -33,7 +33,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ENV DEBFULLNAME=Foo
 ENV DEBEMAIL=foo@bar.org
-ENV MOODE_DIR=/moode
+ENV MOODE_DIR=/
 
 
 
