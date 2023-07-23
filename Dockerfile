@@ -41,12 +41,11 @@ RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | 
 #RUN chmod -R -v +x /docker-entrypoint.d
 # /container/tool/install-service
 
-WORKDIR /docker-entrypoint.d/moode/
-ENTRYPOINT ["./install.sh"]
+ENTRYPOINT ["top", "-b"]
 
 #########################################
 ##         EXPORTS AND VOLUMES         ##
 #########################################
 
 EXPOSE 8080
-# VOLUME /moode
+#VOLUME /home
