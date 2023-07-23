@@ -7,11 +7,11 @@ name: Docker
 
 on:
   workflow_dispatch:
-    #inputs:
-     # logLevel:
-      #  description: Log level     
-       # required: false
-        #default: warning
+    inputs:
+      logLevel:
+        description: Log level     
+        required: false
+        default: warning
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -87,8 +87,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+         # cache-from: type=gha
+         # cache-to: type=gha,mode=max
 
 
       # Sign the resulting Docker image digest except on PRs.
