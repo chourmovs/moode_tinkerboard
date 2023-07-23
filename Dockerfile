@@ -1,4 +1,4 @@
-FROM FROM balenalib/armv7hf-debian:bullseye-build
+FROM balenalib/armv7hf-debian:bullseye-build
 # FROM ubuntu:latest AS Builder
 
 
