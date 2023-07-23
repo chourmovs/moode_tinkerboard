@@ -1,5 +1,5 @@
 #FROM jitesoft/debian:latest
-FROM arm32v7/alpine:3.18.2
+FROM arm32v7/debian:stable
 #FROM ubuntu:latest AS Builder
 
 
