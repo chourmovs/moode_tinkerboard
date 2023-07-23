@@ -26,7 +26,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 #########################################
 
 RUN apt-get update
-RUN apt-get install -y curl sudo top
+RUN apt-get install -y curl sudo
 RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -
 
 #########################################
@@ -41,7 +41,7 @@ RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | 
 #RUN chmod -R -v +x /docker-entrypoint.d
 # /container/tool/install-service
 
-ENTRYPOINT ["top", "-b"]
+ENTRYPOINT ["", ""]
 
 #########################################
 ##         EXPORTS AND VOLUMES         ##
