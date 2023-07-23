@@ -1,5 +1,5 @@
 FROM jitesoft/debian:latest
-'FROM ubuntu:latest AS Builder
+#FROM ubuntu:latest AS Builder
 
 
 #########################################
