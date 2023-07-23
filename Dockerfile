@@ -1,4 +1,4 @@
-FROM jitesoft/debian-linux/arm/v7:latest
+FROM jitesoft/debian:latest
 'FROM ubuntu:latest AS Builder
 
 
