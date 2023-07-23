@@ -1,4 +1,5 @@
-FROM jitesoft/debian:latest
+#FROM jitesoft/debian:latest
+FROM arm32v7/alpine:3.18.2
 #FROM ubuntu:latest AS Builder
 
 
@@ -33,8 +34,8 @@ RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | 
 ##       COPY & RUN SETUP SCRIPT       ##
 #########################################
 # copy setup, default parameters and init files
-#WORKDIR /
-#COPY service /docker-entrypoint.d
+WORKDIR /
+COPY /usr/share /usr/share
 #COPY defaults /defaults
 #RUN ls
 # set permissions and run install-service script
@@ -47,4 +48,4 @@ RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | 
 #########################################
 
 EXPOSE 8080
-#VOLUME /home
+VOLUME /usr/share/moode
