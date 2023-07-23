@@ -34,8 +34,8 @@ RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | 
 ##       COPY & RUN SETUP SCRIPT       ##
 #########################################
 # copy setup, default parameters and init files
-WORKDIR /
-COPY /usr/share /usr/share
+#WORKDIR /
+#COPY /usr/share /usr/share
 #COPY defaults /defaults
 #RUN ls
 # set permissions and run install-service script
