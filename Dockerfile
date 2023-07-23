@@ -1,4 +1,4 @@
-FROM balenalib/asus-tinker-board-debian:latest-build
+FROM FROM balenalib/armv7hf-debian:bullseye-build
 # FROM ubuntu:latest AS Builder
 
 
@@ -29,7 +29,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN install_packages curl sudo 
 CMD ["bash", "start.sh"]
 
-RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=ARMv7l bash -
+RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
