@@ -26,8 +26,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 #########################################
 
 # RUN apt-get update && apt-get install -y --no-install-recommends 
-RUN install_packages curl sudo 
-CMD ["bash", "start.sh"]
+RUN apt-get install -y curl sudo 
+
 
 RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -
 
