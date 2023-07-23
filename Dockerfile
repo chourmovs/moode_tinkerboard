@@ -1,5 +1,5 @@
 FROM balenalib/armv7hf-debian:bullseye-build
-# FROM ubuntu:latest AS Builder
+FROM ubuntu:latest AS Builder
 
 
 #########################################
