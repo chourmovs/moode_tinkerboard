@@ -1,7 +1,4 @@
-#FROM jitesoft/debian:latest
-FROM arm32v7/debian:stable
-#FROM ubuntu:latest AS Builder
-
+FROM navikey/raspbian-bullseye
 
 #########################################
 ##             SET LABELS              ##
@@ -12,7 +9,6 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="chourmovs <chourmovs@gmail.com>"
-
 
 #########################################
 ##        ENVIRONMENTAL CONFIG         ##
@@ -25,10 +21,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 #########################################
 ##          DOWNLOAD PACKAGES          ##
 #########################################
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  systemd systemd-sysv dbus dbus-user-session
 
-RUN apt-get update
-RUN apt-get install -y curl sudo
+RUN apt-get install -y curl sudo libxaw7 ssh
 RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -
+RUN apt-get update
+RUN apt-get install moode-player -y --fix-missing
+RUN apt --fix-broken install
+ 
 
 #########################################
 ##       COPY & RUN SETUP SCRIPT       ##
