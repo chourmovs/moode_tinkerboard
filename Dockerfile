@@ -31,6 +31,7 @@ RUN apt-get update -y
 RUN apt purge ebtables -y
 RUN apt-get install -y udisks
 RUN apt --fix-broken install
+RUN apt-get install -y udisks-glue
 RUN apt-get install -y moode-player --fix-broken --fix-missing
 RUN apt --fix-broken install
  
