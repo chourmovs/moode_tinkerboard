@@ -27,7 +27,7 @@ RUN apt-get update && \
 
 RUN apt-get install -y curl sudo libxaw7 ssh
 RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -
-RUN dpkg --configure -a -y
+RUN dpkg --configure -a
 RUN apt-get clean
 RUN apt-get update
 RUN apt purge ebtables -y
