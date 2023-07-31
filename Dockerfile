@@ -28,7 +28,8 @@ RUN apt-get update && \
 RUN apt-get install -y curl sudo libxaw7 ssh
 RUN curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -
 RUN apt-get update
-RUN apt-get install moode-player -y --fix-missing
+RUN apt purge ebtables
+RUN apt-get install moode-player -y --fix-broken --fix-missing
 RUN apt --fix-broken install
  
 
