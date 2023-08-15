@@ -3,8 +3,8 @@
 printf "\ec"
 echo ""
 echo "****************************************************"
-echo "*    Moode on tinkerboard Armv7l install script     "
-echo "*             By chourmovs v 1.0                    "
+echo "*    Moode on tinkerboard Armv7l install script    *"
+echo "*             By chourmovs v 1.0                   *"
 echo "****************************************************"
 echo ""
 
@@ -25,7 +25,7 @@ fi
 sleep 3
 echo ""
 echo "**************************************"
-echo "*     install docker (host side)      "
+echo "*     install docker (host side)     *"
 echo "**************************************"
 echo ""
 
@@ -36,9 +36,6 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 sudo apt update -y
 sudo apt install -y docker-ce
-#sleep 3
-#sudo usermod -aG docker $USER
-#screen -dm bash -c "exec sudo su -l $USER ; exec sh"
 
 sleep 3
 echo ""
@@ -52,21 +49,16 @@ echo ""
 
 
 while true; do
-
 read -p "Do you want to proceed? note: it will change card order (y/n) " yn
-
 case $yn in 
 	[yY] ) echo ok, we will proceed;
- 
-        sudo nano /etc/modprobe.d/alsa-base.conf;
+         sudo nano /etc/modprobe.d/alsa-base.conf;
         while pgrep -u root nano > /dev/null; do sleep 1; done;
- 
-		break;;
+ 		break;;
 	[nN] ) echo exiting...;
 		break;;
 	* ) echo invalid response;;
 esac
-
 done
 
 
@@ -80,20 +72,15 @@ echo ""
 
 
 while true; do
-
 read -p "Do you want to proceed? note: Bluetooth will be available for moode only (y/n) " yn
-
 case $yn in 
 	[yY] ) echo ok, we will proceed;
- 
-        sudo systemctl stop bluetooth.service;
- 
-		break;;
+         sudo systemctl stop bluetooth.service;
+ 		break;;
 	[nN] ) echo exiting...;
 		break;;
 	* ) echo invalid response;;
 esac
-
 done
 
 
@@ -105,9 +92,7 @@ echo "**************************************************************************
 echo ""
 
 while true; do
-
 read -p "Do you want to proceed? note: Playing from moode will not be possible anymore but it allow radios from moode (y/n) " yn
-
 case $yn in 
 	[yY] ) echo ok, we will proceed;
  
@@ -115,16 +100,12 @@ case $yn in
         sudo systemctl stop mpd.socket;
         sudo systemctl disable mpd.service;
         sudo systemctl disable mpd.socket;
-
- 
 		break;;
 	[nN] ) echo exiting...;
 		break;;
 	* ) echo invalid response;;
 esac
-
 done
-
 
 sleep 2
 echo ""
@@ -138,7 +119,6 @@ sudo chown volumio /var/lib/docker/volumes
 sudo docker create --name debian-moode -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/NAS:/mnt/NAS -v moode:/boot:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined navikey/raspbian-bullseye /lib/systemd/systemd
 
 sudo docker container start debian-moode
-#'docker exec -ti debian-moode /bin/bash    *with this command you enter the container with a console*
 
 echo ""
 echo "*********************************************"
@@ -148,9 +128,12 @@ echo ""
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y ; sleep 3 ; apt-get upgrade -y"
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get install -y curl sudo libxaw7 ssh libsndfile1 libsndfile1-dev"
 
-
-echo "With nano, change ssh port to 2222 and fix openssh"
-sleep 4
+echo ""
+echo ""
+echo "With NANO, change ssh port to 2222 to fix openssh"
+echo ""
+echo ""
+sleep 5
 sudo docker exec -ti debian-moode /bin/bash -c "sudo nano /etc/ssh/sshd_config" 
 while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
 sudo docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
@@ -188,7 +171,7 @@ echo "****************************"
 echo "*    Access Moode web UI   *"
 echo "****************************"
 echo ""
-echo "http://volumio:8008"
+echo "CTRL+CLIC on http://volumio:8008"
 echo ""
 echo "Enjoy"
 
