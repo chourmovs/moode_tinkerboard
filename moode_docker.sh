@@ -38,7 +38,7 @@ sudo apt update -y
 sudo apt install -y docker-ce
 sleep 3
 sudo usermod -aG docker $USER
-exec sudo su -l $USER
+screen -dm bash -c "exec sudo su -l $USER ; exec sh"
 
 sleep 3
 echo ""
