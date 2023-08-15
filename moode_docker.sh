@@ -36,9 +36,9 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 sudo apt update -y
 sudo apt install -y docker-ce
-sleep 3
-sudo usermod -aG docker $USER
-screen -dm bash -c "exec sudo su -l $USER ; exec sh"
+#sleep 3
+#sudo usermod -aG docker $USER
+#screen -dm bash -c "exec sudo su -l $USER ; exec sh"
 
 sleep 3
 echo ""
@@ -132,12 +132,12 @@ echo "************************************************************************"
 echo "*    create container with systemd in priviledged mode and start it    *"
 echo "************************************************************************"
 echo ""
-docker volume create moode
+sudo docker volume create moode
 sudo chown volumio /var/lib/docker/volumes
 
-docker create --name debian-moode -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/NAS:/mnt/NAS -v moode:/boot:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined navikey/raspbian-bullseye /lib/systemd/systemd
+sudo docker create --name debian-moode -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/NAS:/mnt/NAS -v moode:/boot:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined navikey/raspbian-bullseye /lib/systemd/systemd
 
-docker container start debian-moode
+sudo docker container start debian-moode
 #'docker exec -ti debian-moode /bin/bash    *with this command you enter the container with a console*
 
 echo ""
@@ -145,31 +145,31 @@ echo "*********************************************"
 echo "*    install moode player (container side)  *"
 echo "*********************************************"
 echo ""
-docker exec -ti debian-moode /bin/bash -c "apt-get update -y ; sleep 3 ; apt-get upgrade -y"
-docker exec -ti debian-moode /bin/bash -c "apt-get install -y curl sudo libxaw7 ssh libsndfile1 libsndfile1-dev"
+sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y ; sleep 3 ; apt-get upgrade -y"
+sudo docker exec -ti debian-moode /bin/bash -c "apt-get install -y curl sudo libxaw7 ssh libsndfile1 libsndfile1-dev"
 
 
 echo "With nano, change ssh port to 2222 and fix openssh"
 sleep 4
-docker exec -ti debian-moode /bin/bash -c "sudo nano /etc/ssh/sshd_config" 
-while docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
-docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
+sudo docker exec -ti debian-moode /bin/bash -c "sudo nano /etc/ssh/sshd_config" 
+while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
+sudo docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
 
 
-docker exec -ti debian-moode /bin/bash -c "curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -"
-docker exec -ti debian-moode /bin/bash -c "apt-get update -y |apt-get install moode-player -y --fix-missing"
+sudo docker exec -ti debian-moode /bin/bash -c "curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -"
+sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y |apt-get install moode-player -y --fix-missing"
 echo "In general this long install return error, next move will try to fix this"
 sleep 4
-docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install"
-docker exec -ti debian-moode /bin/bash -c "exit"       
+sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install"
+sudo docker exec -ti debian-moode /bin/bash -c "exit"       
 
 echo ""
 echo "****************************************"
 echo "*    restart moode player (host side)  *"
 echo "****************************************"
 echo ""
-docker container stop debian-moode
-docker container start debian-moode
+sudo docker container stop debian-moode
+sudo docker container start debian-moode
 
 echo ""
 echo "***************************************"
@@ -178,10 +178,10 @@ echo "***************************************"
 echo ""
 echo "With nano, change moode http port to 8008 to avoid conflict with volumio front"
 sleep 4
-docker exec -ti debian-moode /bin/bash -c "nano /etc/nginx/sites-available/moode-http.conf"  
-while docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
+sudo docker exec -ti debian-moode /bin/bash -c "nano /etc/nginx/sites-available/moode-http.conf"  
+while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
 
-docker exec -ti debian-moode /bin/bash -c "systemctl restart nginx"
+sudo docker exec -ti debian-moode /bin/bash -c "systemctl restart nginx"
 
 echo ""
 echo "****************************"
