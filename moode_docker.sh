@@ -141,9 +141,17 @@ sudo docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
 
 sudo docker exec -ti debian-moode /bin/bash -c "curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -"
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y |apt-get install moode-player -y --fix-missing"
+echo ""
+echo ""
 echo "In general this long install return error, next move will try to fix this"
-sleep 4
+sleep 2
+echo ""
+
+
 sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install"
+sleep 2
+sudo docker exec -ti debian-moode /bin/bash -c "apt autoremove"
+sleep 2
 sudo docker exec -ti debian-moode /bin/bash -c "exit"       
 
 echo ""
