@@ -175,6 +175,7 @@ echo "*    configure nginx (container side) *"
 echo "***************************************"
 echo ""
 echo "With nano, change moode http port to 8008 to avoid conflict with volumio front"
+sleep 5
 docker exec -ti debian-moode /bin/bash -c "nano /etc/nginx/sites-available/moode-http.conf"  
 while docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
 
