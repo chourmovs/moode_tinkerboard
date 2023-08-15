@@ -38,7 +38,7 @@ sudo apt update -y
 sudo apt install -y docker-ce
 sleep 3
 sudo usermod -aG docker $USER
-newgrp docker
+exec sudo su -l $USER
 
 sleep 3
 echo ""
