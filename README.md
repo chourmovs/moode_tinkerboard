@@ -2,7 +2,7 @@
 
 This bash script will allow you to setup a full fontionnal moode-player over volumio on ASUS tinkerboard.
 
-It will work on every armv7l machine docker capable.
+It will detect and work on every armv7l machine "docker capable".
 
 All the process is automated but you will have to modify certain parameters (i.e port) using [Nano](https://www.hostinger.co.uk/tutorials/how-to-install-and-use-nano-text-editor#How_to_Use_Nano_Text_Editor) during the process
 
