@@ -4,5 +4,6 @@ This script will work on every armv7l machine docker capable
 
 **Instructions**
 in a ssh terminal lauch following command
+curl -O 'https://raw.githubusercontent.com/chourmovs/moode_tinkerboard/main/moode_docker.sh' && chmod 755 moode_docker.sh && ./moode_docker.sh
 
-curl -1sLf  'https://github.com/chourmovs/moode_tinkerboard/blob/main/moode_docker.sh' | sudo -E -
+
