@@ -1,16 +1,33 @@
 # Moode_tinkerboard
 
-This bash script will allow you to setup a full fontionnal moode-player over volumio on ASUS tinkerboard.
+This bash script will allow you to setup a full fontionnal moode-player over volumio on ASUS tinkerboard.  
 
-#### It will also detect and work on every armv7l machine running a "docker capable" linux.
+#### It will also detect and work on every armv7l machine running a "docker capable" linux.  
 
-All the process is automated but you will have to modify certain parameters (i.e port) using [Nano](https://www.hostinger.co.uk/tutorials/how-to-install-and-use-nano-text-editor#How_to_Use_Nano_Text_Editor) during the process.
+All the process is automated but you will have to modify certain parameters (i.e port) using [Nano](https://www.hostinger.co.uk/tutorials/how-to-install-and-use-nano-text-editor#How_to_Use_Nano_Text_Editor) during the process.    
+&nbsp;  &nbsp;  
 
+# What you get 
 
+  ###   is working
+ - UI and artworks without any restriction ( First time it's slow when building library)<p>
+ - MPD access to host /mnt/partition<p>
+ - playing any codecs tested (flac, AAV, mp3)<p>
+ - Wifi, ethernet, bluetooth<p>
+ - Radios<p>
+ - parametric equalizer  
+  
+  ###   is not working
+  - you tell me    
+&nbsp;  &nbsp;  
+# Prerequisite
 
+- Armv7l machine running any linux distribution like Debian<p>
+- #### On Volumio primo , ensure that your ssh key is registred in known host (to do that you will need to ssh login a second time since first login don't do it properly)
+- A terminal to ssh (my preference go to Mobaxterm)    
+&nbsp;  &nbsp;  
 
-
-## Installation
+# Installation
 
 in a ssh terminal lauch following command
 
@@ -18,10 +35,11 @@ in a ssh terminal lauch following command
 curl -O 'https://raw.githubusercontent.com/chourmovs/moode_tinkerboard/main/moode_docker.sh' && chmod 755 moode_docker.sh && ./moode_docker.sh
 ```
 
-And follow the instructions...
+And follow the instructions...    
+&nbsp;  &nbsp;  
 
 
-## To follow and discuss
+# To follow and discuss
 
 https://chourmovs.wixsite.com/blog/en/post/install-moode-in-a-docker-container-on-volumio-primo-asus-tinkerboard-armv7l
 
