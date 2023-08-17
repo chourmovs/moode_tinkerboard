@@ -137,7 +137,7 @@ echo ""
 sleep 5
 #sudo docker exec -ti debian-moode /bin/bash -c "sudo nano /etc/ssh/sshd_config" 
 #while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
-sudo docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/#port 22/port 2222/g' /etc/ssh/sshd_config;"
+sudo docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config;"
 sudo docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
 
 
