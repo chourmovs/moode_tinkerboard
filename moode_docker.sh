@@ -7,9 +7,6 @@ echo "*    Moode on tinkerboard Armv7l install script    *"
 echo "*             By chourmovs v 1.0                   *"
 echo "****************************************************"
 echo ""
-
-echo "TIP when using nano command during the recipe, diplace in the openened file with arrow, change what you need simply with your keyboard," 
-echo "save/exit with [CTRL+X], [y] to confirm, [enter] to overwrite, that's it !"
 echo ""
 sleep 3
 
@@ -43,33 +40,27 @@ echo "**************************************************************************
 echo "*      Optional - Prepare Alsa just in case of external DAC (host side)      *"
 echo "******************************************************************************"
 echo ""
-echo "comment the last line with #, it will modify the order of soundcard in ALSA to make it moode compatible"
+echo "will comment the last line with #, it will modify the order of soundcard in ALSA to make it moode compatible"
 echo "like this:	#options snd-usb-audio index=1,5 vid=0x0bda pid=0x481a"
 echo ""
-
 
 while true; do
 read -p "Do you want to proceed? note: it will change card order (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
-         #sudo nano /etc/modprobe.d/alsa-base.conf;
-        #while pgrep -u root nano > /dev/null; do sleep 1; done;
- 	sudo sed -i 's/option/#option/g' /etc/modprobe.d/alsa-base.conf;
-   	break;;
+ 		sudo sed -i 's/option/#option/g' /etc/modprobe.d/alsa-base.conf;
+   		break;;
 	[nN] ) echo exiting...;
 		break;;
 	* ) echo invalid response;;
 esac
 done
-
-
 	
 echo ""
 echo "*************************************************************************************"
 echo "*      Optional - If you want to use your device as bluetooth receiver (host side)  *"
 echo "*************************************************************************************"
 echo ""
-
 
 
 while true; do
@@ -85,7 +76,6 @@ esac
 done
 
 
-
 echo ""
 echo "************************************************************************************"
 echo "*      Optional - If you want an exlusive access to MPD on port 6600 (host side)   *"
@@ -96,8 +86,7 @@ while true; do
 read -p "Do you want to proceed? note: Playing from moode will not be possible anymore but it allow radios from moode (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
- 
-        sudo systemctl stop mpd.service;
+         sudo systemctl stop mpd.service;
         sudo systemctl stop mpd.socket;
         sudo systemctl disable mpd.service;
         sudo systemctl disable mpd.socket;
@@ -131,12 +120,11 @@ sudo docker exec -ti debian-moode /bin/bash -c "apt-get install -y curl sudo lib
 
 echo ""
 echo ""
-echo "With NANO, change ssh port to 2222 to fix openssh"
+echo "Willchange ssh port to 2222 to fix openssh"
 echo ""
 echo ""
-sleep 5
-#sudo docker exec -ti debian-moode /bin/bash -c "sudo nano /etc/ssh/sshd_config" 
-#while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
+sleep 2
+
 sudo docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config;"
 sudo docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
 
@@ -152,7 +140,7 @@ echo ""
 
 sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install"
 sleep 2
-sudo docker exec -ti debian-moode /bin/bash -c "apt autoremove"
+sudo docker exec -ti debian-moode /bin/bash -c "apt autoremove -y"
 sleep 2
 sudo docker exec -ti debian-moode /bin/bash -c "exit"       
 
@@ -169,10 +157,10 @@ echo "***************************************"
 echo "*    configure nginx (container side) *"
 echo "***************************************"
 echo ""
-echo "With nano, change moode http port to 8008 to avoid conflict with volumio front"
-sleep 4
-#sudo docker exec -ti debian-moode /bin/bash -c "nano /etc/nginx/sites-available/moode-http.conf"  
-#while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
+echo "Will change moode http port to 8008 to avoid conflict with volumio front"
+echo ""
+echo ""
+sleep 2
 sudo docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/80/8008/g' /etc/nginx/sites-available/moode-http.conf;"
 sudo docker exec -ti debian-moode /bin/bash -c "systemctl restart nginx"
 
