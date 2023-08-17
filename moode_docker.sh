@@ -52,9 +52,10 @@ while true; do
 read -p "Do you want to proceed? note: it will change card order (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
-         sudo nano /etc/modprobe.d/alsa-base.conf;
-        while pgrep -u root nano > /dev/null; do sleep 1; done;
- 		break;;
+         #sudo nano /etc/modprobe.d/alsa-base.conf;
+        #while pgrep -u root nano > /dev/null; do sleep 1; done;
+ 	sudo sed -i 's/option/#option/g' /etc/modprobe.d/alsa-base.conf;
+   	break;;
 	[nN] ) echo exiting...;
 		break;;
 	* ) echo invalid response;;
@@ -134,8 +135,9 @@ echo "With NANO, change ssh port to 2222 to fix openssh"
 echo ""
 echo ""
 sleep 5
-sudo docker exec -ti debian-moode /bin/bash -c "sudo nano /etc/ssh/sshd_config" 
-while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
+#sudo docker exec -ti debian-moode /bin/bash -c "sudo nano /etc/ssh/sshd_config" 
+#while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
+sudo docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/#port 22/port 2222/g' /etc/ssh/sshd_config;"
 sudo docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
 
 
@@ -169,9 +171,9 @@ echo "***************************************"
 echo ""
 echo "With nano, change moode http port to 8008 to avoid conflict with volumio front"
 sleep 4
-sudo docker exec -ti debian-moode /bin/bash -c "nano /etc/nginx/sites-available/moode-http.conf"  
-while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
-
+#sudo docker exec -ti debian-moode /bin/bash -c "nano /etc/nginx/sites-available/moode-http.conf"  
+#while sudo docker exec -ti debian-moode /bin/bash -c "pgrep -u root nano" > /dev/null; do sleep 1; done
+sudo docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/80/8008/g' /etc/nginx/sites-available/moode-http.conf;"
 sudo docker exec -ti debian-moode /bin/bash -c "systemctl restart nginx"
 
 echo ""
