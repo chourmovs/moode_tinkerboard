@@ -70,6 +70,7 @@ case $yn in
 	[yY] ) echo ok, we will proceed;
          sudo systemctl stop bluetooth.service;
 	 sudo systemctl disable bluetooth.service;
+  	 sudo systemctl mask bluetooth.service;
  		break;;
 	[nN] ) echo exiting...;
 		break;;
@@ -92,6 +93,8 @@ case $yn in
         sudo systemctl stop mpd.socket;
         sudo systemctl disable mpd.service;
         sudo systemctl disable mpd.socket;
+	sudo systemctl mask mpd.service;
+        sudo systemctl mask mpd.socket;
 		break;;
 	[nN] ) echo exiting...;
 		break;;
