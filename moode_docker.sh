@@ -138,9 +138,9 @@ sleep 2
 echo ""
 
 
-sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install"
+sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install -y"
 sleep 2
-sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y |apt-get install moode-player -y --fix-missing"
+sudo docker exec -ti debian-moode /bin/bash -c "apt-get install moode-player -y --fix-missing"
 sleep 2
 #sudo docker exec -ti debian-moode /bin/bash -c "apt autoremove -y"
 #sleep 2
