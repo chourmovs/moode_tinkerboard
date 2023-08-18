@@ -4,7 +4,7 @@ printf "\ec"
 echo ""
 echo "****************************************************"
 echo "*    Moode on tinkerboard Armv7l install script    *"
-echo "*             By chourmovs v 1.0                   *"
+echo "*             By chourmovs v 1.1                   *"
 echo "****************************************************"
 echo ""
 echo ""
@@ -49,6 +49,7 @@ read -p "Do you want to proceed? note: it will change card order (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
  		sudo sed -i 's/option/#option/g' /etc/modprobe.d/alsa-base.conf;
+   		sudo sed -i 's/##option/#option/g' /etc/modprobe.d/alsa-base.conf;
    		break;;
 	[nN] ) echo exiting...;
 		break;;
