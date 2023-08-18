@@ -112,7 +112,7 @@ echo ""
 sudo docker volume create moode
 sudo chown volumio /var/lib/docker/volumes
 
-sudo docker create --name debian-moode -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/NAS:/mnt/NAS -v moode:/boot:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined navikey/raspbian-bullseye /lib/systemd/systemd
+sudo docker create --name debian-moode --restart always -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/NAS:/mnt/NAS -v moode:/boot:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined navikey/raspbian-bullseye /lib/systemd/systemd
 
 sudo docker container start debian-moode
 
@@ -177,7 +177,11 @@ echo "****************************"
 echo "*    Access Moode web UI   *"
 echo "****************************"
 echo ""
+echo "Volumio will now restart"
+echo ""
+echo ""
 echo "CTRL+CLIC on http://volumio:8008"
 echo ""
 echo "Enjoy"
+sudo reboot
 
