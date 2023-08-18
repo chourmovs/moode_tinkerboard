@@ -50,6 +50,7 @@ case $yn in
 	[yY] ) echo ok, we will proceed;
  		sudo sed -i 's/option/#option/g' /etc/modprobe.d/alsa-base.conf;
    		sudo sed -i 's/##option/#option/g' /etc/modprobe.d/alsa-base.conf;
+     		sudo systemctl restart alsa-state.service
    		break;;
 	[nN] ) echo exiting...;
 		break;;
