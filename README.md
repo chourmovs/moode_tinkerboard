@@ -38,6 +38,12 @@ curl -O 'https://raw.githubusercontent.com/chourmovs/moode_tinkerboard/main/mood
 And follow the instructions...    
 &nbsp;  &nbsp;  
 
+# Changelog
+08.05.23 v1.0 initial release
+08.18.23 v1.1 replace nano interraction by proper "sed" find&replace command
+              Change moode-player install sequence to fix it
+              
+    
 
 # To follow and discuss
 
