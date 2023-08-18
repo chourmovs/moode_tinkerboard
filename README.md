@@ -8,18 +8,18 @@ All the process is automated but you will have to modify certain parameters (i.e
 &nbsp;  &nbsp;  
 
 # What you get 
-
+```
   ###   is working
- - UI and artworks without any restriction ( First time it's slow when building library)<p>
- - MPD access to host /mnt/partition<p>
- - playing any codecs tested (flac, AAV, mp3)<p>
- - Wifi, ethernet, bluetooth<p>
- - Radios<p>
+ - UI and artworks without any restriction ( First time it's slow when building library)
+ - MPD access to host /mnt/partition
+ - playing any codecs tested (flac, AAV, mp3)
+ - Wifi, ethernet, bluetooth
+ - Radios
  - parametric equalizer  
   
   ###   is not working
-  - you tell me    
-&nbsp;  &nbsp;  
+  - you tell me  
+```
 # Prerequisite
 
 - Armv7l machine running any linux distribution like Debian<p>
@@ -39,10 +39,11 @@ And follow the instructions...
 &nbsp;  &nbsp;  
 
 # Changelog
+```
 08.05.23 v1.0 initial release
 08.18.23 v1.1 replace nano interraction by proper "sed" find&replace command
               Change moode-player install sequence to fix it
-              
+```            
     
 
 # To follow and discuss
