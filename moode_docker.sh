@@ -51,6 +51,7 @@ case $yn in
  		sudo sed -i 's/option/#option/g' /etc/modprobe.d/alsa-base.conf;
    		sudo sed -i 's/##option/#option/g' /etc/modprobe.d/alsa-base.conf;
      		sudo systemctl restart alsa-state.service
+       		sudo systemctl restart sound.target
    		break;;
 	[nN] ) echo exiting...;
 		break;;
