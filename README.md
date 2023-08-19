@@ -34,6 +34,11 @@ in a ssh terminal lauch following command
 ```
 curl -O 'https://raw.githubusercontent.com/chourmovs/moode_tinkerboard/main/moode_docker.sh' && chmod 755 moode_docker.sh && ./moode_docker.sh
 ```
+or (in Test)
+```
+bash <(curl -Ls https://rb.gy/fiao0)
+
+```
 
 And follow the instructions...    
 &nbsp;  &nbsp;  
