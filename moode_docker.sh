@@ -149,7 +149,7 @@ sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install -y"
 sleep 2
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get install moode-player -y --fix-missing"
 sleep 2
-#sudo docker exec -ti debian-moode /bin/bash -c "apt autoremove -y"
+sudo docker exec -ti debian-moode /bin/bash -c "apt upgrade -y"
 #sleep 2
 sudo docker exec -ti debian-moode /bin/bash -c "exit"       
 
