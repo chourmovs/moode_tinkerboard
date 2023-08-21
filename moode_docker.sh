@@ -91,12 +91,9 @@ while true; do
 read -p "Do you want to proceed? note: Playing from moode will not be possible anymore but it allow radios from moode (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
-        sudo systemctl stop mpd.service;
-        sudo systemctl stop mpd.socket;
-        sudo systemctl disable mpd.service;
-        sudo systemctl disable mpd.socket;
-	sudo systemctl mask mpd.service;
-        sudo systemctl mask mpd.socket;
+        sudo systemctl stop mpd.service mpd.socket nfs-client.target smbd.service
+	sudo systemctl disable mpd.service mpd.socket nfs-client.target smbd.service
+	sudo systemctl mask mpd.service mpd.socket nfs-client.target smbd.service
 		break;;
 	[nN] ) echo exiting...;
 		break;;
