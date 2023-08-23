@@ -45,7 +45,7 @@ echo "like this:	#options snd-usb-audio index=1,5 vid=0x0bda pid=0x481a"
 echo ""
 
 while true; do
-read -p "Do you want to proceed? note: it will change card order (y/n) " yn
+read -p "Do you want to proceed? note: it will change primo's default card order (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
  		sudo sed -i 's/option/#option/g' /etc/modprobe.d/alsa-base.conf;
@@ -61,13 +61,13 @@ done
 	
 echo ""
 echo "*************************************************************************************"
-echo "*      Optional - If you want to use your device as bluetooth receiver (host side)  *"
+echo "*    Optional - If you want to use your device as bluetooth receiver (host side)    *"
 echo "*************************************************************************************"
 echo ""
 
 
 while true; do
-read -p "Do you want to proceed? note: Bluetooth will be available for moode only (y/n) " yn
+read -p "Do you want to proceed? note: Bluetooth will be available for moode but no more for volumio (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
          sudo systemctl stop bluetooth.service;
@@ -82,13 +82,13 @@ done
 
 
 echo ""
-echo "************************************************************************************"
-echo "*      Optional - If you want an exlusive access to MPD on port 6600 (host side)   *"
-echo "************************************************************************************"
+echo "********************************************************************************************"
+echo "*   Optional - If you want Moode to get an exlusive access to vital service MPD,CIFS,NFS   *"
+echo "********************************************************************************************"
 echo ""
 
 while true; do
-read -p "Do you want to proceed? note: Playing from moode will not be possible anymore but it allow radios from moode (y/n) " yn
+read -p "Do you want to proceed? note: Playing from volumio won't be possible anymore but it allow radios and MPD control from moode (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
         sudo systemctl stop mpd.service mpd.socket nfs-client.target smbd.service
@@ -154,10 +154,10 @@ echo ""
 echo "****************************************"
 echo "*    restart moode player (host side)  *"
 echo "****************************************"
-echo ""
 sudo docker container stop debian-moode
 sudo docker container start debian-moode
 
+echo ""
 echo ""
 echo "***************************************"
 echo "*    configure nginx (container side) *"
