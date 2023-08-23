@@ -15,7 +15,7 @@ if [ "$(uname -m)"  == "armv7l" ]
 	echo "Tinkerboard detected, This script will launch"
   echo ""
   else
-    echo "This script is for armv7l only"
+    echo "This script is for armv7l only, it will now exit"
     exit 1
 fi
 
