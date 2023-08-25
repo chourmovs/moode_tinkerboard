@@ -111,7 +111,7 @@ sudo mkdir /home/moode && sudo chmod 777 /home/moode
 sudo docker volume create moode
 sudo chown volumio /var/lib/docker/volumes
 
-sudo docker create --name debian-moode --restart always -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/:/mnt/:rw -v moode:/boot:rw -v /var/lib/mpd/music:/home/moode:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined --cpu-shares=10240 navikey/raspbian-bullseye /lib/systemd/systemd
+sudo docker create --name debian-moode --restart always -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /home/moode:/boot:rw -v /home/moode:/var/lib/mpd/:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined --cpu-shares=10240 navikey/raspbian-bullseye /lib/systemd/systemd
 
 sudo docker container start debian-moode
 
