@@ -107,6 +107,7 @@ echo "************************************************************************"
 echo "*    create container with systemd in priviledged mode and start it    *"
 echo "************************************************************************"
 echo ""
+sudo mkdir /home/moode && sudo chmod 777 /home/moode
 sudo docker volume create moode
 sudo chown volumio /var/lib/docker/volumes
 
