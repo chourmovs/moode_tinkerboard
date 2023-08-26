@@ -91,9 +91,9 @@ while true; do
 read -p "Do you want to proceed? note: Playing from volumio won't be possible anymore but it allow radios and MPD control from moode (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
-        sudo systemctl stop mpd.service mpd.socket nfs-client.target smbd.service
-	sudo systemctl disable mpd.service mpd.socket nfs-client.target smbd.service
-	sudo systemctl mask mpd.service mpd.socket nfs-client.target smbd.service
+        sudo systemctl stop mpd.service mpd.socket nfs-client.target smbd.service rcpbind.service
+	sudo systemctl disable mpd.service mpd.socket nfs-client.target smbd.service rcpbind.service
+	sudo systemctl mask mpd.service mpd.socket nfs-client.target smbd.service rcpbind.service
 		break;;
 	[nN] ) echo exiting...;
 		break;;
