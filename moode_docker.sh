@@ -33,8 +33,6 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 sudo apt update -y
 sudo apt install -y docker-ce
-sudo usermod -aG docker ${USER}
-sg docker -c "echo continuing the mission"
 
 sleep 3
 echo ""
@@ -109,7 +107,7 @@ echo "************************************************************************"
 echo "*    create container with systemd in priviledged mode and start it    *"
 echo "************************************************************************"
 echo ""
-sudo mkdir /home/moode && sudo chown volumio:volumio /home/moode && sudo chmod 777 /home/moode
+# sudo mkdir /home/moode && sudo chown volumio:volumio /home/moode && sudo chmod 777 /home/moode
 # sudo docker volume create moode
 sudo chown -R volumio /var/lib/docker/
 
@@ -135,7 +133,6 @@ sleep 2
 sudo docker exec -ti debian-moode /bin/bash -c "sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config;"
 sudo docker exec -ti debian-moode /bin/bash -c "service sshd restart"
 sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install -y"
-sudo docker exec -ti debian-moode /bin/bash -c "chown root /etc/sudo.conf | chown root /etc/sudoers.d "
 sudo docker exec -ti debian-moode /bin/bash -c "curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -"
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y |apt-get install moode-player -y --fix-missing"
 echo ""
