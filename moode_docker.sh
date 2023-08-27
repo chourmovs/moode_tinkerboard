@@ -111,7 +111,7 @@ echo ""
 # sudo docker volume create moode
 sudo chown -R volumio /var/lib/docker/
 
-sudo docker create --name debian-moode --restart always -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /lib/modules:/lib/modules:rw -v /mnt:/mnt:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined --cpu-shares=10240 navikey/raspbian-bullseye /lib/systemd/systemd
+sudo docker create --name debian-moode --restart always -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt:/mnt:rw --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined --cpu-shares=10240 navikey/raspbian-bullseye /lib/systemd/systemd
 
 sudo docker container start debian-moode
 
@@ -122,6 +122,7 @@ echo "*********************************************"
 echo ""
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y ; sleep 3 ; apt-get upgrade -y"
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get install -y curl sudo libxaw7 ssh libsndfile1 libsndfile1-dev cifs-utils nfs-common"
+sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install -y"
 
 echo ""
 echo ""
@@ -130,9 +131,8 @@ echo ""
 echo ""
 sleep 2
 
-sudo docker exec -ti debian-moode /bin/bash -c "sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config;"
-sudo docker exec -ti debian-moode /bin/bash -c "service sshd restart"
-sudo docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install -y"
+sudo docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config;"
+sudo docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
 sudo docker exec -ti debian-moode /bin/bash -c "curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -"
 sudo docker exec -ti debian-moode /bin/bash -c "apt-get update -y |apt-get install moode-player -y --fix-missing"
 echo ""
