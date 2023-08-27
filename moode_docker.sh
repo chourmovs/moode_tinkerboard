@@ -34,7 +34,7 @@ sudo add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/debi
 sudo apt update -y
 sudo apt install -y docker-ce
 sudo usermod -aG docker ${USER}
-newgrp docker
+sg docker -c "echo "continuing the mission""
 
 sleep 3
 echo ""
