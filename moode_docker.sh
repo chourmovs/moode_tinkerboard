@@ -134,7 +134,7 @@ sleep 2
 
 docker exec -ti debian-moode /bin/bash -c "sudo sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config;"
 docker exec -ti debian-moode /bin/bash -c "sudo service sshd restart"
-
+docker exec -ti debian-moode /bin/bash -c "apt --fix-broken install -y"
 
 docker exec -ti debian-moode /bin/bash -c "curl -1sLf  'https://dl.cloudsmith.io/public/moodeaudio/m8y/setup.deb.sh' | sudo -E distro=raspbian codename=bullseye arch=armv7hf bash -"
 docker exec -ti debian-moode /bin/bash -c "apt-get update -y |apt-get install moode-player -y --fix-missing"
