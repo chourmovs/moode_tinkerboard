@@ -155,7 +155,6 @@ echo "****************************************"
 echo "*    restart moode player (host side)  *"
 echo "****************************************"
 
-sudo chown -R volumio /var/lib/docker/
 sudo docker container stop debian-moode
 sudo docker container start debian-moode
 
