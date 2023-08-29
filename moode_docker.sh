@@ -182,5 +182,5 @@ echo ""
 echo "CTRL+CLIC on http://volumio:8008"
 echo ""
 echo "Enjoy"
-sudo reboot
+# sudo reboot
 
