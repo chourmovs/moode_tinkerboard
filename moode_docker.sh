@@ -91,9 +91,9 @@ while true; do
 read -p "Do you want to proceed? note: Playing from volumio won't be possible anymore but it allow radios and MPD control from moode (y/n) " yn
 case $yn in 
 	[yY] ) echo ok, we will proceed;
-        sudo systemctl stop mpd.service mpd.socket nfs-client.target smbd.service dbus.service
-	sudo systemctl disable mpd.service mpd.socket nfs-client.target smbd.service dbus.service
-	sudo systemctl mask mpd.service mpd.socket nfs-client.target smbd.service dbus.service
+        sudo systemctl stop mpd.service mpd.socket nfs-client.target smbd.service 
+	sudo systemctl disable mpd.service mpd.socket nfs-client.target smbd.service 
+	sudo systemctl mask mpd.service mpd.socket nfs-client.target smbd.service 
 		break;;
 	[nN] ) echo exiting...;
 		break;;
@@ -108,10 +108,10 @@ echo "*    create container with systemd in priviledged mode and start it    *"
 echo "************************************************************************"
 echo ""
 # sudo mkdir /home/moode && sudo chown volumio:volumio /home/moode && sudo chmod 777 /home/moode
-# sudo docker volume create moode
+sudo docker volume create moode
 # sudo chown -R volumio /var/lib/docker/
 
-sudo docker create --name debian-moode --restart always -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/NAS:/mnt/NAS --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined --cpu-shares=10240 navikey/raspbian-bullseye /lib/systemd/systemd
+sudo docker create --name debian-moode --restart always -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v moode:/mnt/NAS --device /dev/snd --net host --privileged -e LANG=C.UTF-8 --cap-add=NET_ADMIN --security-opt seccomp:unconfined --cpu-shares=10240 navikey/raspbian-bullseye /lib/systemd/systemd
 
 sudo docker container start debian-moode
 
