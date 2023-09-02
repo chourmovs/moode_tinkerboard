@@ -4,7 +4,7 @@ This bash script will allow you to setup a full fontionnal moode-player over vol
 
 #### It will also detect and work on every armv7l machine running a "docker capable" linux.  
 
-All the process is automated but you will have to modify certain parameters (i.e port) using [Nano](https://www.hostinger.co.uk/tutorials/how-to-install-and-use-nano-text-editor#How_to_Use_Nano_Text_Editor) during the process.    
+All the process is automated but you will have to interact with console and make some choices using your keyboard.    
 &nbsp;  &nbsp;  
 
 # What you get 
