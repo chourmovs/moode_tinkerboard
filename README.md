@@ -45,10 +45,7 @@ Q : My share can't mont &nbsp;  &nbsp;
 A : try to edit path manually in Library/host and remove any option in Library/advanced/mount options (leave it blank and save)
 
 Q : Moode can't browse my mounted share  &nbsp; &nbsp;   
-A : restart MPD in Configure/Audio/MPD section, then Configure/library/Music Database/Regenerate  
-
-And follow the instructions...    
-&nbsp;  &nbsp;  
+A : restart MPD in Configure/Audio/MPD section, then Configure/library/Music Database/Regenerate      
 
 # Changelog
 ```
