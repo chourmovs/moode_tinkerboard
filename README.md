@@ -39,7 +39,7 @@ bash <(curl -Ls https://rb.gy/fiao0)
 And follow the instructions...    
 &nbsp;  &nbsp;  
 
-# Troubleshoot"
+# Troubleshoot
 
 Q : My share can't mont &nbsp;  &nbsp;   
 A : try to edit path manually in Library/host and remove any option in Library/advanced/mount options (leave it blank and save)
