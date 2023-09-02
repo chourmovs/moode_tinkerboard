@@ -48,7 +48,7 @@ Q : Moode can't browse my mounted share  &nbsp; &nbsp;
 A : restart MPD in Configure/Audio/MPD section, then Configure/library/Music Database/Regenerate      
 
 Q : Access moodeOS console   
-A : in your host ssh console put "sudo docker exec -ti debian-moode /bin/bash"   
+A : in your host ssh console put <b>"sudo docker exec -ti debian-moode /bin/bash"</b>   
 
 # Changelog
 ```
