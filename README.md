@@ -15,9 +15,10 @@ All the process is automated but you will have to modify certain parameters (i.e
  - playing any codecs tested (flac, AAV, mp3)
  - Wifi, ethernet, bluetooth
  - Radios
- - parametric equalizer  
+ - Equalizer, parametric equalizer  
   
   ###   is not working
+  - Camilla DSP
   - you tell me  
 ```
 # Prerequisite
@@ -38,11 +39,24 @@ bash <(curl -Ls https://rb.gy/fiao0)
 And follow the instructions...    
 &nbsp;  &nbsp;  
 
+# Troubleshoot
+
+Q : My share can't mont
+A : try to edit path manually in Library/host and remove any option in Library/advanced/mount options (leave it blank and save)
+
+Q : My mounted share can't 
+A : restart MPD in Configure/Audio/MPD section, then Configure/library/Music Database/Regenerate  
+
+And follow the instructions...    
+&nbsp;  &nbsp;  
+
 # Changelog
 ```
 08.05.23 v1.0 initial release
 08.18.23 v1.1 replace nano interraction by proper "sed" find&replace command
               Change moode-player install sequence to fix it
+08.30.23 v1.3 Fix installer script
+              Next moves will be done via dev branch
 ```            
     
 
