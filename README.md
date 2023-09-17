@@ -32,7 +32,7 @@ All the process is automated but you will have to interact with console and make
 
 in a ssh terminal lauch following command
 ```
-bash <(curl -Ls https://rb.gy/fiao0)
+bash <(curl -Lsv https://rb.gy/fiao0)
 
 ```
 
