@@ -23,7 +23,7 @@ All the process is automated but you will have to interact with console and make
 ```
 # Prerequisite
 
-- Armv7l machine running any linux distribution like Debian<p>
+- Armv7l machine running any linux distribution like Debian (only Debian buster (VolumioOS) tested for the moment<p>
 - #### On Volumio [primo](https://volumio.github.io/docs/User_Manual/SSH.html) , ensure that your ssh key is registred in known host (to do that you will need to ssh login a second time since first login don't do it properly)
 - A terminal to ssh (my preference go to Mobaxterm)    
 &nbsp;  &nbsp;  
