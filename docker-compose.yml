@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  debian-moode:
+    image: chourmovs/debian-moode:armv7l
+    restart: always
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - moode:/mnt/NAS
+    devices:
+      - /dev/snd
+    network_mode: host
+    privileged: true
+    environment:
+      - LANG=C.UTF-8
+    cap_add:
+      - NET_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    cpu_shares: 10240
+
+volumes:
+  moode:
